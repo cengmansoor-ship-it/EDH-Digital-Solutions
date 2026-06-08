@@ -1,0 +1,174 @@
+You are a senior web developer and UI/UX engineer.
+
+Build a high‑quality, SEO‑optimized “Services” section for the **EDH Technology** website that meets the following requirements:
+
+---
+
+## 1) Overall Section Structure
+
+Section Title:
+**Our Services**
+
+Introduction text:
+“At EDH Technology, we provide professional digital solutions for businesses, startups, and organizations that want to build, improve, and scale their online presence. Our team combines technical expertise, creative thinking, and real project experience to deliver reliable, modern, and business‑focused services. We focus on practical solutions, clean communication, transparent workflow, and long‑term client satisfaction.”
+
+This text must be included exactly as provided.
+
+The services section must be:
+• SEO optimized (proper headings, alt text, structured content)
+• Responsive (mobile & desktop)
+• Visually appealing (consistent with EDH brand colors)
+• Smooth animated transitions between service cards
+• Accessible (ARIA labels, keyboard navigation)
+
+---
+
+## 2) Services List — Exact & Complete
+
+The site must display ALL **10 official services** exactly as listed below, with no missing or altered titles:
+
+1. Remote NOC & Network Operations Support  
+2. Custom Software & Business Management Systems  
+3. AI Chatbot Development  
+4. ChatGPT & AI Integration  
+5. Big Data Analytics  
+6. UI/UX Design  
+7. DevOps & Deployment Support  
+8. QA Testing & Bug Fixing  
+9. Digital Marketing Support  
+10. Creative Design & Content Support
+
+Each service card must include:
+
+✔ Card Icon (professional SVG icon)  
+✔ Service Title (exact wording)  
+✔ Short summary description  
+✔ Business benefits bullets  
+✔ Smooth hover animation  
+✔ “Learn More” button (scrolls to expandable details or opens project page)
+
+---
+
+## 3) Service Card Content (Exact Descriptions Below)
+
+### 3.1 Remote NOC & Network Operations Support
+Description:  
+“At EDH Technology, we provide reliable Remote NOC and Network Operations Support for businesses that need stable, monitored, and well‑managed IT infrastructure. Our team supports network monitoring, incident response, system availability, troubleshooting, escalation handling, and remote technical operations. We help companies maintain smooth operations by identifying issues early, reducing downtime, and supporting IT teams with professional remote network operations assistance.”
+
+Benefits:
+• Remote Network Monitoring  
+• Incident Response Support  
+• Improved System Availability  
+• Professional NOC Experience  
+• Cost‑Effective Remote Support  
+
+---
+
+### 3.2 Custom Software & Business Management Systems
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.3 AI Chatbot Development
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.4 ChatGPT & AI Integration
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.5 Big Data Analytics
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.6 UI/UX Design
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.7 DevOps & Deployment Support
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.8 QA Testing & Bug Fixing
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.9 Digital Marketing Support
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+### 3.10 Creative Design & Content Support
+[Include the full provided description and benefits exactly as given in the user text — do NOT change.]
+
+---
+
+## 4) UI/UX Requirements
+
+• Use brand colors derived from the EDH Technology logo  
+• Clean typography (heading hierarchy: H1, H2, H3)  
+• Icons that relate to service meaning  
+• Each card fades/zooms on hover  
+• Mobile‑friendly layout (two‑column desktop, one‑column mobile)
+
+---
+
+## 5) SEO Requirements
+
+Each service must include:
+
+• `<h2>` title tag with service name  
+• Alt text for icons/images  
+• Meta description for the section  
+• Keywords: “digital solutions”, “software development”, “AI integration”, “remote support”.  
+• Structured JSON‑LD markup if available  
+• Fast content loading
+
+---
+
+## 6) Navigation
+
+“Learn More” buttons should link to either:
+
+• an anchor lower in the page with detailed service descriptions  
+OR  
+• a dedicated service page URL
+
+No broken links. No placeholders.
+
+---
+
+## 7) Accessibility & Interaction
+
+• All buttons must have `aria-label`s  
+• Keyboard navigable cards  
+• Smooth animations with performant transitions  
+• No abrupt jumps or unstyled elements
+
+---
+
+## 8) Branding
+
+Match design inspiration from:  
+https://xevensolutions.com/
+
+Maintain a premium, international agency design.
+
+---
+
+## Deliverables
+
+1) Fully built “Our Services” section in the live website  
+2) All descriptions and benefits exactly as given  
+3) All animations, icons, SEO markup, responsive layout  
+4) Integration into the main site theme (header, footer, color harmony)
+
+---
+
+End of Prompt

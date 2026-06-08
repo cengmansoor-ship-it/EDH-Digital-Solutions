@@ -129,7 +129,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-semibold text-sm mb-0.5">Website</p>
-                        <p className="text-muted-foreground text-sm">www.edhtechnalogy.com</p>
+                        <a href="https://www.edhtechnalogy.odoo.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-sm hover:text-primary transition-colors">www.edhtechnalogy.odoo.com</a>
                       </div>
                     </div>
                   </div>
