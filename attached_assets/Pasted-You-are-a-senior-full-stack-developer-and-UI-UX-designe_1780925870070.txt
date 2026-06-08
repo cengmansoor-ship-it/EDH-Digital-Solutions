@@ -1,0 +1,86 @@
+You are a senior full-stack developer and UI/UX designer. Build a professional, animated, international agency website for EDH Technology, fully brand-aligned with the uploaded logo and color palette.
+
+Requirements:
+
+1. **Logo/Header**
+   - Change current square logo to a perfect circular logo.
+   - Preserve colors and branding.
+   - Add subtle hover animation and premium glow.
+   - Sticky header with smooth animation and active page indicators.
+
+2. **Portfolio / Projects Section**
+   - Automatically pull real project info from the GitHub account: https://github.com/EDH-Technalogy
+   - Include all 7 main projects with:
+       - Project Name
+       - Description from README
+       - Technologies used
+       - Screenshots (from README)
+       - GitHub link button
+       - Live deployment button (if exists)
+   - Projects must show real data only; no mock data.
+   - Locations: mark Egypt, Thailand, Indonesia, Afghanistan as "Remote"
+   - Ensure every button and link navigates correctly; no blocked URLs.
+
+3. **Services Section**
+   - Display all 10 official services:
+     1. Remote NOC & Network Operations Support
+     2. Custom Software & Business Management Systems
+     3. AI Chatbot Development
+     4. ChatGPT & AI Integration
+     5. Big Data Analytics
+     6. UI/UX Design
+     7. DevOps & Deployment Support
+     8. QA Testing & Bug Fixing
+     9. Digital Marketing Support
+     10. Creative Design & Content Support
+   - Each service should have:
+     - Icon
+     - Short description
+     - Hover animation
+
+4. **Contact Section**
+   - Emails: cengmansoor@gmail.com, info@edhtechnalogy.com
+   - Call Number: +93704243811
+   - WhatsApp Number: +93711389331
+   - Contact form must be fully functional; messages sent to provided emails.
+   - Include clickable email links, call links, and WhatsApp chat button.
+
+5. **Social Media Buttons**
+   - Use official links:
+     - Facebook: https://www.facebook.com/edhtechnalogy
+     - Instagram: https://www.instagram.com/edh_technalogy
+     - LinkedIn: https://www.linkedin.com/company/122913941/admin/dashboard/
+   - Buttons should open real links, not blocked.
+   - Hover color: brand green/cyan (not white)
+   - Smooth transition animation
+
+6. **Chatbot**
+   - Floating chatbot button on bottom-right.
+   - Brand colors, smooth animation.
+   - Fully functional with free AI API (OpenAI GPT-3.5/4 sandbox or Dialogflow).
+   - Replaceable API in future without redesigning.
+
+7. **SEO & Performance**
+   - Page titles, meta descriptions, H1/H2, alt tags for images.
+   - Fast-loading, responsive, mobile-first.
+   - Clean URLs.
+   - Ready for production hosting.
+   - Ensure Google search indexable.
+
+8. **Admin Panel**
+   - Add/Edit/Delete projects
+   - Update GitHub / deployment links
+   - Update emails, phone numbers, WhatsApp
+   - Update social media links
+   - Update services
+   - Upload project images/screenshots
+   - Changes reflect immediately on website.
+
+9. **Design Inspiration**
+   - Replicate premium agency feel from: https://xevensolutions.com/
+   - Hero section, animations, gradients, typography, portfolio showcase.
+   - Modern, professional, international style.
+
+10. **Deployment**
+   - Deploy on Odoo free plan with domain (or Replit/Vercel for frontend demo)
+   - All features must work on deployment.
