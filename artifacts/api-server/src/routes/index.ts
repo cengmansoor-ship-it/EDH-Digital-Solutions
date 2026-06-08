@@ -4,6 +4,7 @@ import projectsRouter from "./projects";
 import servicesRouter from "./services";
 import contactsRouter from "./contacts";
 import openaiRouter from "./openai";
+import githubRouter from "./github";
 
 const router: IRouter = Router();
 
@@ -12,5 +13,6 @@ router.use(projectsRouter);
 router.use(servicesRouter);
 router.use(contactsRouter);
 router.use(openaiRouter);
+router.use(githubRouter);
 
 export default router;
