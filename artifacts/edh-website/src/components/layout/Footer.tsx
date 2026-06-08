@@ -108,7 +108,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Egypt — Dakahlia
+                Egypt — Remote
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -116,7 +116,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Thailand — Bangkok
+                Thailand — Remote
               </li>
             </ul>
           </div>

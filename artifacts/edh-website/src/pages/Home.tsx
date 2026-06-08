@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Globe, Smartphone, Brain, Cloud, Palette, ShieldCheck, TrendingUp, Plug, ExternalLink, MapPin, Mail, Phone, ChevronRight } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Brain, Cloud, Palette, ShieldCheck, TrendingUp, Plug, ExternalLink, MapPin, Mail, Phone, ChevronRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useListProjects, useListServices, useSubmitContact, getListProjectsQueryKey, getListServicesQueryKey } from "@workspace/api-client-react";
+import { useQuery } from "@tanstack/react-query";
+import { useListServices, useSubmitContact, getListServicesQueryKey } from "@workspace/api-client-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -50,9 +51,9 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 
 const locations = [
   { country: "Afghanistan", city: "Kandahar", flag: "🇦🇫", desc: "Remote freelancing team serving Central Asia" },
-  { country: "Egypt", city: "Dakahlia", flag: "🇪🇬", desc: "Remote freelancing team for Middle East & North Africa" },
+  { country: "Egypt", city: "Remote", flag: "🇪🇬", desc: "Remote freelancing team for Middle East & North Africa" },
   { country: "Indonesia", city: "Remote", flag: "🇮🇩", desc: "Remote freelancing team for Southeast Asia" },
-  { country: "Thailand", city: "Bangkok", flag: "🇹🇭", desc: "Remote freelancing team for regional delivery" },
+  { country: "Thailand", city: "Remote", flag: "🇹🇭", desc: "Remote freelancing team for regional delivery" },
 ];
 
 const stats = [
@@ -62,8 +63,27 @@ const stats = [
   { value: "50+", label: "Happy Clients" },
 ];
 
+interface GitHubProject {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  githubUrl: string;
+  deployUrl: string | null;
+  language: string | null;
+}
+
 export default function Home() {
-  const { data: projects = [] } = useListProjects({ query: { queryKey: getListProjectsQueryKey() } });
+  const { data: githubProjects = [] } = useQuery<GitHubProject[]>({
+    queryKey: ["github-projects"],
+    queryFn: async () => {
+      const res = await fetch("/api/github-projects");
+      if (!res.ok) throw new Error("Failed");
+      return res.json();
+    },
+    staleTime: 5 * 60 * 1000,
+  });
   const { data: services = [] } = useListServices({ query: { queryKey: getListServicesQueryKey() } });
   const submitContact = useSubmitContact();
   const { toast } = useToast();
@@ -73,7 +93,7 @@ export default function Home() {
     defaultValues: { name: "", email: "", subject: "", message: "" },
   });
 
-  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
+  const featuredProjects = githubProjects.slice(0, 3);
   const displayServices = services.slice(0, 6);
 
   const onSubmit = async (data: ContactForm) => {

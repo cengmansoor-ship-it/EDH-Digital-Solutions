@@ -32,9 +32,9 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 const locations = [
   { country: "Afghanistan", city: "Kandahar", flag: "🇦🇫" },
-  { country: "Egypt", city: "Dakahlia", flag: "🇪🇬" },
+  { country: "Egypt", city: "Remote", flag: "🇪🇬" },
   { country: "Indonesia", city: "Remote", flag: "🇮🇩" },
-  { country: "Thailand", city: "Bangkok", flag: "🇹🇭" },
+  { country: "Thailand", city: "Remote", flag: "🇹🇭" },
 ];
 
 const socialLinks = [
