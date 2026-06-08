@@ -1,6 +1,7 @@
 import { Router, type IRouter } from "express";
 import { eq, asc } from "drizzle-orm";
 import { db, conversations, messages } from "@workspace/db";
+import { logger } from "../lib/logger";
 import {
   CreateOpenaiConversationBody,
   SendOpenaiMessageBody,
@@ -252,6 +253,7 @@ router.post("/openai/conversations/:id/messages", async (req, res): Promise<void
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     res.end();
   } catch (err) {
+    logger.error({ err }, "OpenAI API call failed");
     const fallback = getFallbackResponse(parsed.data.content);
     res.write(`data: ${JSON.stringify({ content: fallback })}\n\n`);
     await db.insert(messages).values({

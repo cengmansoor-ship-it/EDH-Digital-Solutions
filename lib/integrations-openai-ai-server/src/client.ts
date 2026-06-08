@@ -1,16 +1,11 @@
 import OpenAI from "openai";
 
 let _client: OpenAI | null = null;
-let _initialized = false;
 
 export function getOpenAIClient(): OpenAI | null {
-  if (_initialized) return _client;
-  _initialized = true;
+  if (_client) return _client;
   const key = process.env.OPENAI_API_KEY;
-  if (!key) {
-    _client = null;
-    return null;
-  }
+  if (!key) return null;
   _client = new OpenAI({ apiKey: key });
   return _client;
 }
