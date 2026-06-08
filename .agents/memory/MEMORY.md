@@ -1,0 +1,2 @@
+- [react-icons-v5-missing-icons](react-icons-v5-missing-icons.md) — react-icons v5 dropped SiLinkedin; use lucide-react social icons instead
+- [openai-integration-env-vars](openai-integration-env-vars.md) — AI integration templates use wrong env vars; must patch to OPENAI_API_KEY
