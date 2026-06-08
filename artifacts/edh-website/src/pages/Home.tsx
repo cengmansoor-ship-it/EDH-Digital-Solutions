@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Globe, Smartphone, Brain, Cloud, Palette, ShieldCheck, TrendingUp, Plug, ExternalLink, MapPin, Mail, Phone, ChevronRight, Github } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Brain, Cloud, Palette, ShieldCheck, TrendingUp, Plug, ExternalLink, MapPin, Mail, Phone, ChevronRight, Github, Monitor, Code2, Bot, BarChart3, Server, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { useListServices, useSubmitContact, getListServicesQueryKey } from "@workspace/api-client-react";
@@ -23,6 +23,12 @@ const iconMap: Record<string, React.ReactNode> = {
   ShieldCheck: <ShieldCheck size={28} />,
   TrendingUp: <TrendingUp size={28} />,
   Plug: <Plug size={28} />,
+  Monitor: <Monitor size={28} />,
+  Code2: <Code2 size={28} />,
+  Bot: <Bot size={28} />,
+  BarChart3: <BarChart3 size={28} />,
+  Server: <Server size={28} />,
+  Layers: <Layers size={28} />,
 };
 
 const contactSchema = z.object({
