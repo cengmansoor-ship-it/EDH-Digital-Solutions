@@ -1,0 +1,255 @@
+You are a senior-level UI/UX designer, full-stack architect, and agency website specialist.
+
+IMPORTANT: Do NOT use mock data, fake content, placeholder links, dummy projects, fake contact information, lorem ipsum text, or fabricated portfolio items anywhere in the website.
+
+The current EDH Technology website needs the following corrections and improvements:
+
+Brand & Header Fixes
+
+1. The EDH Technology logo currently appears inside a square container.
+   
+   - Change it to a perfect circular logo container.
+   - Add a subtle premium glow and hover animation.
+   - Maintain the exact logo colors and brand identity.
+   - All website colors must be based on the uploaded logo color palette.
+
+2. Improve the header navigation.
+   
+   - Professional sticky header.
+   - Smooth animations.
+   - Active page indicators.
+   - Fully responsive on mobile and desktop.
+
+---
+
+Social Media Fixes
+
+The social media buttons are currently incorrect.
+
+Use ONLY these official links:
+
+Facebook:
+https://www.facebook.com/edhtechnalogy
+
+Instagram:
+https://www.instagram.com/edh_technalogy
+
+LinkedIn:
+https://www.linkedin.com/company/122913941/admin/dashboard/
+
+Requirements:
+
+- Every social media button must open the real link.
+- No blocked links.
+- No placeholder URLs.
+- No "#" links.
+- No dummy navigation.
+- Open in new tab.
+- Proper accessibility labels.
+
+Hover Effects:
+Currently the icons become white and disappear visually.
+
+Fix:
+
+- On hover use the primary brand green/cyan color.
+- Maintain visibility.
+- Add smooth transition.
+- Premium hover animation.
+
+---
+
+Contact Information Fixes
+
+Replace ALL fake contact data with:
+
+Primary Email:
+cengmansoor@gmail.com
+
+Business Email:
+info@edhtechnalogy.com
+
+Call Number:
++93704243811
+
+WhatsApp Number:
++93711389331
+
+Requirements:
+
+- Clickable email links.
+- Click-to-call phone links.
+- WhatsApp direct chat button.
+- Contact section must use real information only.
+
+---
+
+Services Section Fix
+
+Currently some services are missing and some are incorrect.
+
+The website MUST display ALL 10 official services exactly:
+
+1. Remote NOC & Network Operations Support
+2. Custom Software & Business Management Systems
+3. AI Chatbot Development
+4. ChatGPT & AI Integration
+5. Big Data Analytics
+6. UI/UX Design
+7. DevOps & Deployment Support
+8. QA Testing & Bug Fixing
+9. Digital Marketing Support
+10. Creative Design & Content Support
+
+Requirements:
+
+- Create premium service cards.
+- Each card must have icon.
+- Short description.
+- Learn More button.
+- Smooth animation.
+
+Do NOT remove any service.
+
+---
+
+Portfolio / Projects Section Fix
+
+IMPORTANT:
+
+DO NOT use mock projects.
+DO NOT generate fake portfolio entries.
+
+I will provide my GitHub repository links.
+
+Your task:
+
+1. Read every GitHub repository.
+2. Extract real information.
+3. Use real project names.
+4. Use real descriptions.
+5. Use real technologies.
+6. Use real screenshots when available.
+7. Use real GitHub URLs.
+8. Use real deployment URLs.
+
+Example:
+
+Kandahar University WMS
+
+If repository information exists:
+
+- Show actual project details.
+- Show actual technologies.
+- Show actual description.
+- Show actual deployment.
+
+Do not invent anything.
+
+Every project card must contain:
+
+- Project Name
+- Project Category
+- Technologies
+- Short Description
+- GitHub Button
+- Live Demo Button
+- Project Details Modal
+
+Requirements:
+
+- Every button must navigate to the actual destination.
+- No broken links.
+- No disabled buttons.
+- No fake URLs.
+- No placeholder projects.
+
+I will provide the 7 GitHub repositories separately.
+
+---
+
+Inspiration & Design Requirements
+
+Primary inspiration:
+
+https://xevensolutions.com/
+
+Study the design language carefully and recreate the same premium agency-level feel without copying content.
+
+Key inspiration points:
+
+- Premium hero section
+- Smooth animations
+- Modern typography
+- High-end service presentation
+- Agency-style portfolio showcase
+- Interactive UI
+- Professional call-to-actions
+- Modern gradients
+- Trust-building layout
+
+Website must feel like a high-end international software agency.
+
+---
+
+Admin Dashboard Requirements
+
+Create a secure admin system.
+
+Admin must be able to:
+
+- Add new projects
+- Edit projects
+- Delete projects
+- Add deployment URLs
+- Update GitHub URLs
+- Update emails
+- Update phone numbers
+- Update WhatsApp numbers
+- Update social links
+- Update services
+- Upload project images
+
+Changes must appear instantly on the website.
+
+No code editing required for content updates.
+
+---
+
+Chatbot Requirements
+
+The website must include a floating chatbot similar to the chatbot style used on premium software agency websites.
+
+Requirements:
+
+- Floating button bottom-right.
+- Modern animation.
+- Brand colors.
+- Professional UI.
+
+Use free AI integration architecture for now.
+
+Prepare chatbot component so API can be replaced later without redesigning the website.
+
+Chatbot must never look like a placeholder.
+
+---
+
+Performance & Quality
+
+Requirements:
+
+- SEO optimized
+- Fast loading
+- Responsive
+- Mobile-first
+- Accessibility compliant
+- Production-ready
+- Professional animations
+- Clean code structure
+- Reusable components
+- Enterprise-level UI quality
+
+Final goal:
+
+Build a premium international software agency website for EDH Technology that looks professional enough to attract clients from Saudi Arabia, Egypt, Indonesia, Thailand, and global markets.

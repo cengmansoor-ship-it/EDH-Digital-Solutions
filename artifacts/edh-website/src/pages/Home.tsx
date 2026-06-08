@@ -49,10 +49,10 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 }
 
 const locations = [
-  { country: "Afghanistan", city: "Kandahar", flag: "🇦🇫", desc: "Operations hub serving Central Asia" },
-  { country: "Egypt", city: "Dakahlia", flag: "🇪🇬", desc: "Middle East & North Africa division" },
-  { country: "Indonesia", city: "Secret", flag: "🇮🇩", desc: "Southeast Asia technology center" },
-  { country: "Thailand", city: "Bangkok", flag: "🇹🇭", desc: "Regional delivery & innovation hub" },
+  { country: "Afghanistan", city: "Kandahar", flag: "🇦🇫", desc: "Remote freelancing team serving Central Asia" },
+  { country: "Egypt", city: "Dakahlia", flag: "🇪🇬", desc: "Remote freelancing team for Middle East & North Africa" },
+  { country: "Indonesia", city: "Remote", flag: "🇮🇩", desc: "Remote freelancing team for Southeast Asia" },
+  { country: "Thailand", city: "Bangkok", flag: "🇹🇭", desc: "Remote freelancing team for regional delivery" },
 ];
 
 const stats = [
@@ -140,7 +140,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            EDH Technology is a multinational software consultancy delivering world-class web, mobile, and AI solutions from offices in Afghanistan, Egypt, Indonesia, and Thailand.
+            EDH Technology is an international freelancing software agency delivering world-class web, mobile, and AI solutions remotely for companies across Afghanistan, Egypt, Indonesia, Thailand, and beyond.
           </motion.p>
 
           <motion.div
@@ -288,8 +288,8 @@ export default function Home() {
           <FadeInSection>
             <div className="text-center mb-16">
               <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Global Presence</p>
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Our Offices</h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">Strategically located across four countries to serve clients in every time zone.</p>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Our Global Reach</h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">Remote freelancing teams operating across four countries — serving clients in every time zone.</p>
             </div>
           </FadeInSection>
 
@@ -352,7 +352,7 @@ export default function Home() {
                       <Globe size={18} />
                     </div>
                     <div>
-                      <p className="font-semibold text-sm mb-1">Global Offices</p>
+                      <p className="font-semibold text-sm mb-1">Freelancing Presence</p>
                       <p className="text-muted-foreground text-sm">Afghanistan, Egypt, Indonesia, Thailand</p>
                     </div>
                   </div>

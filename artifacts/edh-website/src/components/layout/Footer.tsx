@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Global Offices</h4>
+            <h4 className="font-display font-semibold text-lg mb-4">Freelancing Presence</h4>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -112,7 +112,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Indonesia — Secret
+                Indonesia — Remote
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />

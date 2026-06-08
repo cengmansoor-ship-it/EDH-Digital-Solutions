@@ -134,6 +134,9 @@ export default function Chatbot() {
               if (json.content) {
                 fullText += json.content;
                 updateAssistant(fullText);
+              } else if (json.error && !fullText) {
+                fullText = "Sorry, I couldn't process that right now. Please contact us at info@edhtechnalogy.com or try again.";
+                updateAssistant(fullText);
               }
             } catch {
               // ignore parse errors on individual SSE lines
@@ -153,18 +156,18 @@ export default function Chatbot() {
         } catch {}
       }
 
-      // Ensure final text is set
-      if (fullText) updateAssistant(fullText);
+      // If no text was received, provide a fallback
+      if (!fullText) {
+        fullText = "I'm here to help! You can ask me about our services, pricing, or how to get started. Or reach us directly at info@edhtechnalogy.com.";
+        updateAssistant(fullText);
+      }
     } catch (err) {
+      const fallback = "I'm having a connectivity issue. Please try again or contact us at info@edhtechnalogy.com — we're happy to help!";
       setMessages((prev) => {
         const updated = [...prev];
         for (let i = updated.length - 1; i >= 0; i--) {
           if (updated[i].role === "assistant" && updated[i].content === "") {
-            updated[i] = {
-              role: "assistant",
-              content: "Sorry, something went wrong. Please try again.",
-              error: true,
-            };
+            updated[i] = { role: "assistant", content: fallback };
             break;
           }
         }

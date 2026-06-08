@@ -33,7 +33,7 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 const locations = [
   { country: "Afghanistan", city: "Kandahar", flag: "🇦🇫" },
   { country: "Egypt", city: "Dakahlia", flag: "🇪🇬" },
-  { country: "Indonesia", city: "Secret", flag: "🇮🇩" },
+  { country: "Indonesia", city: "Remote", flag: "🇮🇩" },
   { country: "Thailand", city: "Bangkok", flag: "🇹🇭" },
 ];
 
@@ -69,7 +69,7 @@ export default function Contact() {
             <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Reach Out</p>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">Contact Us</h1>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Ready to start your next project? Have a question? Our team is ready to help from any of our four global offices.
+              Ready to start your next project? Have a question? Our remote freelancing teams across four countries are ready to help.
             </p>
           </div>
         </FadeIn>
@@ -136,7 +136,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <h3 className="font-display font-semibold text-lg mb-4">Our Offices</h3>
+                  <h3 className="font-display font-semibold text-lg mb-4">Freelancing Presence</h3>
                   <div className="space-y-3">
                     {locations.map((loc) => (
                       <div key={loc.country} className="flex items-center gap-3 text-sm">
