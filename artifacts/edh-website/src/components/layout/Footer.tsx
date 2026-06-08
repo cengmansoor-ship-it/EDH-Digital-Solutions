@@ -1,6 +1,24 @@
 import { Link } from "wouter";
-import { Linkedin, Github, Twitter, Facebook } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import edhLogo from "@assets/EDH_technalogy_Logo_01_1780917940904.png";
+
+const socialLinks = [
+  {
+    Icon: Facebook,
+    label: "Facebook",
+    href: "https://www.facebook.com/edhtechnalogy",
+  },
+  {
+    Icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/edh_technalogy",
+  },
+  {
+    Icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/122913941/",
+  },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,38 +36,66 @@ export default function Footer() {
             <p className="text-muted-foreground mb-6 font-medium">
               Plan • Build • Test • Launch
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github size={20} />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook size={20} />
-              </a>
+            <div className="flex gap-3">
+              {socialLinks.map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Services</h4>
             <ul className="space-y-3 text-muted-foreground">
-              <li><Link href="/services" className="hover:text-primary transition-colors">Custom Software</Link></li>
-              <li><Link href="/services" className="hover:text-primary transition-colors">Web Applications</Link></li>
-              <li><Link href="/services" className="hover:text-primary transition-colors">Mobile Apps</Link></li>
-              <li><Link href="/services" className="hover:text-primary transition-colors">Digital Transformation</Link></li>
+              <li>
+                <Link href="/services" className="hover:text-primary transition-colors">
+                  Custom Software
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-primary transition-colors">
+                  Web Applications
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-primary transition-colors">
+                  Mobile Apps
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-primary transition-colors">
+                  Digital Transformation
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Company</h4>
             <ul className="space-y-3 text-muted-foreground">
-              <li><Link href="/projects" className="hover:text-primary transition-colors">Projects</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-              <li><Link href="/admin" className="hover:text-primary transition-colors">Admin Portal</Link></li>
+              <li>
+                <Link href="/projects" className="hover:text-primary transition-colors">
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-primary transition-colors">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin" className="hover:text-primary transition-colors">
+                  Admin Portal
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -57,16 +103,20 @@ export default function Footer() {
             <h4 className="font-display font-semibold text-lg mb-4">Global Offices</h4>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary" /> Afghanistan
+                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                Afghanistan — Kandahar
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary" /> Egypt
+                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                Egypt — Dakahlia
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary" /> Indonesia
+                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                Indonesia — Secret
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary" /> Thailand
+                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                Thailand — Bangkok
               </li>
             </ul>
           </div>
@@ -75,8 +125,12 @@ export default function Footer() {
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>© {currentYear} EDH Technology. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>

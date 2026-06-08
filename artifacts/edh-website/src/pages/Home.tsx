@@ -49,9 +49,9 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 }
 
 const locations = [
-  { country: "Afghanistan", city: "Kabul", flag: "🇦🇫", desc: "Operations hub serving Central Asia" },
-  { country: "Egypt", city: "Cairo", flag: "🇪🇬", desc: "Middle East & North Africa division" },
-  { country: "Indonesia", city: "Jakarta", flag: "🇮🇩", desc: "Southeast Asia technology center" },
+  { country: "Afghanistan", city: "Kandahar", flag: "🇦🇫", desc: "Operations hub serving Central Asia" },
+  { country: "Egypt", city: "Dakahlia", flag: "🇪🇬", desc: "Middle East & North Africa division" },
+  { country: "Indonesia", city: "Secret", flag: "🇮🇩", desc: "Southeast Asia technology center" },
   { country: "Thailand", city: "Bangkok", flag: "🇹🇭", desc: "Regional delivery & innovation hub" },
 ];
 
@@ -335,7 +335,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-1">Email</p>
-                      <p className="text-muted-foreground text-sm">info@edhtech.com</p>
+                      <a href="mailto:info@edhtechnalogy.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">info@edhtechnalogy.com</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -344,7 +344,7 @@ export default function Home() {
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-1">Phone</p>
-                      <p className="text-muted-foreground text-sm">+1 (555) 000-0000</p>
+                      <a href="tel:+93704243811" className="text-muted-foreground text-sm hover:text-primary transition-colors">+93 704 243 811</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

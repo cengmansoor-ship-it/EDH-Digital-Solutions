@@ -32,10 +32,9 @@ export default function Admin() {
 
   // Social links (localStorage)
   const [socialLinks, setSocialLinks] = useState({
-    linkedin: localStorage.getItem("social_linkedin") || "",
-    github: localStorage.getItem("social_github") || "",
-    twitter: localStorage.getItem("social_twitter") || "",
-    facebook: localStorage.getItem("social_facebook") || "",
+    facebook: localStorage.getItem("social_facebook") || "https://www.facebook.com/edhtechnalogy",
+    instagram: localStorage.getItem("social_instagram") || "https://www.instagram.com/edh_technalogy",
+    linkedin: localStorage.getItem("social_linkedin") || "https://www.linkedin.com/company/122913941/",
   });
 
   const { data: projects = [] } = useListProjects({ query: { queryKey: getListProjectsQueryKey() } });
@@ -333,11 +332,11 @@ export default function Admin() {
           <div>
             <h2 className="font-display font-semibold text-xl mb-6">Social Media Links</h2>
             <div className="bg-card border border-border/50 rounded-2xl p-6 max-w-lg space-y-4">
-              {(["linkedin", "github", "twitter", "facebook"] as const).map((key) => (
+              {(["facebook", "instagram", "linkedin"] as const).map((key) => (
                 <div key={key}>
-                  <label className="text-sm font-medium capitalize mb-1.5 block">{key === "twitter" ? "X (Twitter)" : key}</label>
+                  <label className="text-sm font-medium capitalize mb-1.5 block">{key.charAt(0).toUpperCase() + key.slice(1)}</label>
                   <Input
-                    placeholder={`https://${key}.com/your-handle`}
+                    placeholder={`https://www.${key}.com/your-handle`}
                     value={socialLinks[key]}
                     onChange={(e) => setSocialLinks({ ...socialLinks, [key]: e.target.value })}
                     data-testid={`input-social-${key}`}

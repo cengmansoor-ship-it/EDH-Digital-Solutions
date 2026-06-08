@@ -174,7 +174,7 @@ router.post("/openai/conversations/:id/messages", async (req, res): Promise<void
   try {
     const stream = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      max_completion_tokens: 8192,
+      max_tokens: 1024,
       messages: chatMessages,
       stream: true,
     });

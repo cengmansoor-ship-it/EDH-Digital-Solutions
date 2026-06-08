@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, Phone, Globe, ArrowRight } from "lucide-react";
-import { Linkedin, Github, Twitter, Facebook } from "lucide-react";
+import { Mail, Phone, Globe, ArrowRight, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,17 +31,16 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 const locations = [
-  { country: "Afghanistan", city: "Kabul", flag: "🇦🇫" },
-  { country: "Egypt", city: "Cairo", flag: "🇪🇬" },
-  { country: "Indonesia", city: "Jakarta", flag: "🇮🇩" },
+  { country: "Afghanistan", city: "Kandahar", flag: "🇦🇫" },
+  { country: "Egypt", city: "Dakahlia", flag: "🇪🇬" },
+  { country: "Indonesia", city: "Secret", flag: "🇮🇩" },
   { country: "Thailand", city: "Bangkok", flag: "🇹🇭" },
 ];
 
 const socialLinks = [
-  { Icon: Linkedin, label: "LinkedIn" },
-  { Icon: Github, label: "GitHub" },
-  { Icon: Twitter, label: "X (Twitter)" },
-  { Icon: Facebook, label: "Facebook" },
+  { Icon: Facebook, label: "Facebook", href: "https://www.facebook.com/edhtechnalogy" },
+  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/edh_technalogy" },
+  { Icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/122913941/" },
 ];
 
 export default function Contact() {
@@ -89,8 +88,12 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-semibold text-sm mb-0.5">Email</p>
-                        <p className="text-muted-foreground text-sm">info@edhtech.com</p>
-                        <p className="text-muted-foreground text-sm">support@edhtech.com</p>
+                        <a href="mailto:cengmansoor@gmail.com" className="text-muted-foreground text-sm hover:text-primary transition-colors block">
+                          cengmansoor@gmail.com
+                        </a>
+                        <a href="mailto:info@edhtechnalogy.com" className="text-muted-foreground text-sm hover:text-primary transition-colors block">
+                          info@edhtechnalogy.com
+                        </a>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -99,7 +102,25 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-semibold text-sm mb-0.5">Phone</p>
-                        <p className="text-muted-foreground text-sm">+1 (555) 000-0000</p>
+                        <a href="tel:+93704243811" className="text-muted-foreground text-sm hover:text-primary transition-colors block">
+                          +93 704 243 811
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                        <MessageCircle size={18} />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-sm mb-0.5">WhatsApp</p>
+                        <a
+                          href="https://wa.me/93711389331"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground text-sm hover:text-primary transition-colors block"
+                        >
+                          +93 711 389 331
+                        </a>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -108,7 +129,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <p className="font-semibold text-sm mb-0.5">Website</p>
-                        <p className="text-muted-foreground text-sm">www.edhtech.com</p>
+                        <p className="text-muted-foreground text-sm">www.edhtechnalogy.com</p>
                       </div>
                     </div>
                   </div>
@@ -130,12 +151,14 @@ export default function Contact() {
                 <div>
                   <h3 className="font-display font-semibold text-lg mb-4">Follow Us</h3>
                   <div className="flex gap-3">
-                    {socialLinks.map(({ Icon, label }) => (
+                    {socialLinks.map(({ Icon, label, href }) => (
                       <a
                         key={label}
-                        href="#"
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label={label}
-                        className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                        className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
                       >
                         <Icon size={18} />
                       </a>
