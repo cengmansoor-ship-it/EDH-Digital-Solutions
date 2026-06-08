@@ -273,17 +273,25 @@ export default function Home() {
                   <div className="p-5" style={{ userSelect: "none" }}>
                     <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">{project.category}</span>
                     <h3 className="font-display font-semibold text-lg mt-2 mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">{project.description}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3 line-clamp-2">{project.description}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {project.tags.slice(0, 3).map((tag) => (
                         <span key={tag} className="text-xs bg-secondary px-2 py-0.5 rounded text-muted-foreground">{tag}</span>
                       ))}
                     </div>
-                    {project.deployUrl && (
-                      <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary text-sm font-medium hover:underline">
-                        View Live Demo <ExternalLink size={14} />
+                    <div className="flex items-center gap-3">
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-muted-foreground text-sm font-medium hover:text-foreground transition-colors">
+                        <Github size={14} /> GitHub
                       </a>
-                    )}
+                      {project.deployUrl && (
+                        <>
+                          <span className="text-border">·</span>
+                          <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary text-sm font-medium hover:underline">
+                            Live Demo <ExternalLink size={13} />
+                          </a>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               </FadeInSection>
