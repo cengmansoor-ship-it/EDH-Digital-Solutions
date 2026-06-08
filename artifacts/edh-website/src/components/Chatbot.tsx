@@ -167,6 +167,73 @@ export default function Chatbot() {
     }
   };
 
+  const QUICK_REPLIES = [
+    "What services do you offer?",
+    "How can I get a quote?",
+    "Tell me about your team",
+    "Help me write a Python script",
+  ];
+
+  const sendQuickReply = async (text: string) => {
+    if (isStreaming) return;
+    const userText = text.trim();
+    setMessages((prev) => [...prev, { role: "user", content: userText }]);
+    setIsStreaming(true);
+
+    const convId = await initConversation();
+    if (!convId) {
+      setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, I couldn't connect. Please try again.", error: true }]);
+      setIsStreaming(false);
+      return;
+    }
+
+    setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+    await new Promise((r) => setTimeout(r, 0));
+
+    let fullText = "";
+    const updateAssistant = (t: string) => {
+      setMessages((prev) => {
+        const updated = [...prev];
+        for (let i = updated.length - 1; i >= 0; i--) {
+          if (updated[i].role === "assistant") { updated[i] = { role: "assistant", content: t }; break; }
+        }
+        return updated;
+      });
+    };
+
+    try {
+      const res = await fetch(`/api/openai/conversations/${convId}/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: userText }),
+      });
+      if (!res.ok || !res.body) { updateAssistant("Please contact us at info@edhtechnalogy.com."); setIsStreaming(false); return; }
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop()!;
+        for (const line of lines) {
+          if (line.startsWith("data: ")) {
+            try { const json = JSON.parse(line.slice(6)); if (json.content) { fullText += json.content; updateAssistant(fullText); } } catch {}
+          }
+        }
+      }
+      if (!fullText) updateAssistant("I'm here to help! Ask me anything about EDH Technology or any other topic.");
+    } catch {
+      updateAssistant("I'm having a connectivity issue. Please try again.");
+    } finally {
+      setIsStreaming(false);
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  };
+
+  const showQuickReplies = messages.length === 1 && !isStreaming;
+
   return (
     <>
       {/* Toggle button */}
@@ -282,6 +349,25 @@ export default function Chatbot() {
                   </div>
                 </motion.div>
               ))}
+              {/* Quick-reply suggestion chips */}
+              {showQuickReplies && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, delay: 0.1 }}
+                  className="flex flex-wrap gap-1.5 mt-1"
+                >
+                  {QUICK_REPLIES.map((reply) => (
+                    <button
+                      key={reply}
+                      onClick={() => sendQuickReply(reply)}
+                      className="text-xs px-3 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors whitespace-nowrap"
+                    >
+                      {reply}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
               <div ref={messagesEndRef} />
             </div>
 

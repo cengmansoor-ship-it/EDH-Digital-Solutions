@@ -71,6 +71,6 @@ export async function speechToText(audioBuffer: Buffer, format: "wav" | "mp3" | 
   const openai = getOpenAIClient();
   if (!openai) throw new Error("OPENAI_API_KEY is not configured.");
   const file = await toFile(audioBuffer, `audio.${format}`);
-  const response = await openai.audio.transcriptions.create({ file, model: "gpt-4o-mini-transcribe" } as Parameters<typeof openai.audio.transcriptions.create>[0]);
+  const response = await openai.audio.transcriptions.create({ file, model: "gpt-4o-mini-transcribe" } as Parameters<typeof openai.audio.transcriptions.create>[0]) as unknown as { text: string };
   return response.text;
 }

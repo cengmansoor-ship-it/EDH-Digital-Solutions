@@ -219,7 +219,7 @@ router.post("/openai/conversations/:id/messages", async (req, res): Promise<void
 
   const chatMessages = [
     { role: "system" as const, content: EDH_SYSTEM_PROMPT },
-    ...history.map((m) => ({
+    ...history.map((m: { role: string; content: string }) => ({
       role: m.role as "user" | "assistant",
       content: m.content,
     })),
