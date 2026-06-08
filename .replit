@@ -40,13 +40,13 @@ waitForPort = 8080
 name = "EDH Website"
 author = "agent"
 
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "PORT=8081 BASE_PATH=/ pnpm --filter @workspace/edh-website dev"
-waitForPort = 8081
-
 [workflows.workflow.metadata]
 outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "PORT=20985 BASE_PATH=/ pnpm --filter @workspace/edh-website dev"
+waitForPort = 20985
 
 [agent]
 stack = "PNPM_WORKSPACE"
