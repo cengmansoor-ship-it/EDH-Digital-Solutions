@@ -224,7 +224,7 @@ export default function Home() {
           </FadeInSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayServices.map((service, i) => (
+            {(displayServices as Array<{ id: number; title: string; description: string; icon: string }>).map((service, i) => (
               <FadeInSection key={service.id} delay={i * 0.08}>
                 <motion.div
                   whileHover={{ y: -4, boxShadow: "0 0 25px rgba(0,240,255,0.12)" }}
@@ -348,8 +348,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact */}
+      {/* Why Choose EDH */}
       <section className="py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <FadeInSection>
+            <div className="text-center mb-16">
+              <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Why EDH Technology</p>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Built for Results, Not Just Deliverables</h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">We don't just write code — we solve business problems, ship on time, and stick around for the long haul.</p>
+            </div>
+          </FadeInSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Globe,
+                title: "Remote-First, Global Team",
+                desc: "Our distributed teams across Afghanistan, Egypt, Indonesia, and Thailand work asynchronously across every time zone — so your project never waits.",
+                color: "text-cyan-400", bg: "bg-cyan-400/10",
+              },
+              {
+                icon: ShieldCheck,
+                title: "End-to-End Delivery",
+                desc: "We own the full lifecycle: Plan → Build → Test → Launch. One team, one workflow, zero hand-off chaos.",
+                color: "text-green-400", bg: "bg-green-400/10",
+              },
+              {
+                icon: Brain,
+                title: "AI-Native Development",
+                desc: "From chatbots to GPT integrations and big data analytics — AI isn't a bolt-on for us, it's baked into how we build.",
+                color: "text-violet-400", bg: "bg-violet-400/10",
+              },
+              {
+                icon: TrendingUp,
+                title: "Transparent & Agile",
+                desc: "Weekly updates, clear milestones, and open communication channels. You always know exactly where your project stands.",
+                color: "text-amber-400", bg: "bg-amber-400/10",
+              },
+              {
+                icon: Layers,
+                title: "Cost-Effective for Any Scale",
+                desc: "Whether you're a startup or an established enterprise, our remote model delivers senior talent at a fraction of the in-house cost.",
+                color: "text-pink-400", bg: "bg-pink-400/10",
+              },
+              {
+                icon: Code2,
+                title: "Long-Term Partnership",
+                desc: "We don't disappear after launch. Maintenance, scaling, feature additions — we're your ongoing tech partner.",
+                color: "text-sky-400", bg: "bg-sky-400/10",
+              },
+            ].map((item, i) => (
+              <FadeInSection key={item.title} delay={i * 0.08}>
+                <motion.div
+                  whileHover={{ y: -4, boxShadow: "0 8px 32px rgba(0,0,0,0.2)" }}
+                  className="bg-card border border-border/50 rounded-2xl p-6 group h-full"
+                >
+                  <div className={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <item.icon size={22} className={item.color} />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                </motion.div>
+              </FadeInSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="py-24 bg-secondary/10">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <FadeInSection>

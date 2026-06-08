@@ -224,7 +224,7 @@ export default function Admin() {
             )}
 
             <div className="space-y-3">
-              {projects.map((p) => (
+              {(projects as Array<{ id: number; title: string; description: string; category: string; deployUrl: string | null; tags: string[]; featured: boolean }>).map((p) => (
                 <div key={p.id} data-testid={`row-project-${p.id}`} className="bg-card border border-border/50 rounded-xl px-5 py-4 flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
@@ -278,7 +278,7 @@ export default function Admin() {
             )}
 
             <div className="space-y-3">
-              {services.map((s) => (
+              {(services as Array<{ id: number; title: string; description: string; icon: string; order: number }>).map((s) => (
                 <div key={s.id} data-testid={`row-service-${s.id}`} className="bg-card border border-border/50 rounded-xl px-5 py-4 flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
@@ -309,7 +309,7 @@ export default function Admin() {
               <p className="text-muted-foreground text-center py-16">No contact submissions yet.</p>
             ) : (
               <div className="space-y-4">
-                {contacts.map((c) => (
+                {(contacts as Array<{ id: number; name: string; email: string; subject: string; message: string; createdAt: string }>).map((c) => (
                   <div key={c.id} data-testid={`row-contact-${c.id}`} className="bg-card border border-border/50 rounded-xl p-5">
                     <div className="flex items-start justify-between gap-4 mb-2">
                       <div>
