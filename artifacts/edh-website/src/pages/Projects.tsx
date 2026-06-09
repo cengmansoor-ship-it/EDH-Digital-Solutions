@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Search, Code2, Layers } from "lucide-react";
+import { ExternalLink, Search, Code2, Layers, Github } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useListProjects } from "@workspace/api-client-react";
 
@@ -64,14 +64,25 @@ function ProjectCard({ project, index }: { project: DbProject; index: number }) 
 
           <div className="flex items-center gap-3 pt-1">
             {project.deployUrl ? (
-              <a
-                href={project.deployUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-              >
-                Live Demo <ExternalLink size={13} />
-              </a>
+              project.deployUrl.includes("github.com") ? (
+                <a
+                  href={project.deployUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                >
+                  <Github size={14} /> View on GitHub
+                </a>
+              ) : (
+                <a
+                  href={project.deployUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                >
+                  Live Demo <ExternalLink size={13} />
+                </a>
+              )
             ) : (
               <span className="text-xs text-muted-foreground">No live link</span>
             )}
