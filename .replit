@@ -79,3 +79,5 @@ channel = "stable-25_05"
 [userenv]
 
 [userenv.shared]
+GMAIL_USER = "cengmansoor@gmail.com"
+GMAIL_APP_PASSWORD = "iufj fhed fqkc vfji"
