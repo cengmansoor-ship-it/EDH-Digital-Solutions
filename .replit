@@ -24,13 +24,13 @@ args = "API Backend"
 name = "API Backend"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "PORT=8080 node --enable-source-maps /home/runner/workspace/artifacts/api-server/dist/index.mjs"
 waitForPort = 8080
-
-[workflows.workflow.metadata]
-outputType = "console"
 
 [agent]
 stack = "BEST_EFFORT_FALLBACK"
