@@ -1,10 +1,10 @@
 import { Router, type IRouter } from "express";
-import healthRouter from "./health";
-import projectsRouter from "./projects";
-import servicesRouter from "./services";
-import contactsRouter from "./contacts";
-import openaiRouter from "./openai";
-import githubRouter from "./github";
+import healthRouter from "./health.js";
+import projectsRouter from "./projects.js";
+import servicesRouter from "./services.js";
+import contactsRouter from "./contacts.js";
+import openaiRouter from "./openai.js";
+import githubRouter from "./github.js";
 
 const router: IRouter = Router();
 

@@ -1,7 +1,7 @@
 import { Router, type IRouter } from "express";
 import { db, contactsTable } from "@workspace/db";
 import { SubmitContactBody } from "@workspace/api-zod";
-import { sendContactNotification } from "../lib/email";
+import { sendContactNotification } from "../lib/email.js";
 
 const router: IRouter = Router();
 
