@@ -4,7 +4,7 @@ import { Plus, Trash2, Edit, LogOut, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useListProjects, useCreateProject, useDeleteProject, useUpdateProject, useListServices, useCreateService, useDeleteService, useUpdateService, useListContacts, getListProjectsQueryKey, getListServicesQueryKey, getListContactsQueryKey } from "@workspace/api-client-react";
+import { useListProjects, useCreateProject, useDeleteProject, useUpdateProject, useListServices, useCreateService, useDeleteService, useUpdateService, useListContacts, useDeleteContact, getListProjectsQueryKey, getListServicesQueryKey, getListContactsQueryKey } from "@workspace/api-client-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import edhLogo from "@assets/EDH_technalogy_Logo_01_1780917940904.png";
@@ -47,6 +47,7 @@ export default function Admin() {
   const createService = useCreateService();
   const deleteService = useDeleteService();
   const updateService = useUpdateService();
+  const deleteContact = useDeleteContact();
 
   const login = () => {
     if (password === ADMIN_PASSWORD) {
@@ -148,6 +149,16 @@ export default function Admin() {
       toast({ title: "Service deleted" });
     } catch {
       toast({ title: "Error deleting service", variant: "destructive" });
+    }
+  };
+
+  const handleDeleteContact = async (id: number) => {
+    try {
+      await deleteContact.mutateAsync({ id });
+      queryClient.invalidateQueries({ queryKey: getListContactsQueryKey() });
+      toast({ title: "Contact deleted" });
+    } catch {
+      toast({ title: "Error deleting contact", variant: "destructive" });
     }
   };
 
@@ -316,7 +327,12 @@ export default function Admin() {
                         <span className="font-medium">{c.name}</span>
                         <span className="text-muted-foreground text-sm ml-3">{c.email}</span>
                       </div>
-                      <span className="text-xs text-muted-foreground flex-shrink-0">{new Date(c.createdAt).toLocaleDateString()}</span>
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <span className="text-xs text-muted-foreground">{new Date(c.createdAt).toLocaleDateString()}</span>
+                        <Button variant="ghost" size="sm" onClick={() => handleDeleteContact(c.id)} className="text-destructive hover:text-destructive" data-testid={`button-delete-contact-${c.id}`}>
+                          <Trash2 size={14} />
+                        </Button>
+                      </div>
                     </div>
                     <p className="text-sm font-medium text-primary mb-1">{c.subject}</p>
                     <p className="text-sm text-muted-foreground">{c.message}</p>

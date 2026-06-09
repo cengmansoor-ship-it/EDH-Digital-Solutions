@@ -189,6 +189,14 @@ export const ListContactsResponse = zod.array(ListContactsResponseItem)
 
 
 /**
+ * @summary Delete a contact submission
+ */
+export const DeleteContactParams = zod.object({
+  "id": zod.coerce.number()
+})
+
+
+/**
  * @summary List all conversations
  */
 export const ListOpenaiConversationsResponseItem = zod.object({

@@ -240,6 +240,27 @@ paths:
                 items:
                   $ref: "#/components/schemas/Contact"
 
+  /contacts/{id}:
+    delete:
+      operationId: deleteContact
+      tags: [contacts]
+      summary: Delete a contact submission
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+
   /openai/conversations:
     get:
       operationId: listOpenaiConversations

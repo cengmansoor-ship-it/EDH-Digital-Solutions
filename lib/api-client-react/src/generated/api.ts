@@ -932,6 +932,76 @@ export function useListContacts<TData = Awaited<ReturnType<typeof listContacts>>
 
 
 
+export const getDeleteContactUrl = (id: number,) => {
+
+
+
+
+  return `/api/contacts/${id}`
+}
+
+/**
+ * @summary Delete a contact submission
+ */
+export const deleteContact = async (id: number, options?: RequestInit): Promise<void> => {
+
+  return customFetch<void>(getDeleteContactUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+export const getDeleteContactMutationOptions = <TError = ErrorType<ApiError>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteContact>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteContact>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['deleteContact'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteContact>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteContact(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteContactMutationResult = NonNullable<Awaited<ReturnType<typeof deleteContact>>>
+
+    export type DeleteContactMutationError = ErrorType<ApiError>
+
+    /**
+ * @summary Delete a contact submission
+ */
+export const useDeleteContact = <TError = ErrorType<ApiError>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteContact>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteContact>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteContactMutationOptions(options));
+    }
+
 export const getListOpenaiConversationsUrl = () => {
 
 
