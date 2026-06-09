@@ -33,7 +33,7 @@ outputType = "console"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "PORT=8080 DATABASE_URL=$DATABASE_URL pnpm --filter @workspace/api-server dev"
+args = "PORT=8080 pnpm --filter @workspace/api-server dev"
 waitForPort = 8080
 
 [[workflows.workflow]]
@@ -59,15 +59,11 @@ timeoutMs = 20000
 
 [[ports]]
 localPort = 5000
-externalPort = 5000
-
-[[ports]]
-localPort = 8080
-externalPort = 8080
-
-[[ports]]
-localPort = 8081
 externalPort = 80
+
+[[ports]]
+localPort = 8082
+externalPort = 3002
 
 [[ports]]
 localPort = 20985
@@ -79,5 +75,3 @@ channel = "stable-25_05"
 [userenv]
 
 [userenv.shared]
-PORT = "5173"
-BASE_PATH = "/"
