@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Plus, Trash2, Edit, LogOut, Eye } from "lucide-react";
+import { Plus, Trash2, Edit, LogOut, Eye, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -220,7 +220,7 @@ export default function Admin() {
                 </div>
                 <Textarea placeholder="Description" value={projectForm.description} onChange={(e) => setProjectForm({ ...projectForm, description: e.target.value })} rows={3} data-testid="input-project-description" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input placeholder="Deploy URL (optional)" value={projectForm.deployUrl} onChange={(e) => setProjectForm({ ...projectForm, deployUrl: e.target.value })} data-testid="input-project-url" />
+                  <Input placeholder="GitHub or Live URL (optional)" value={projectForm.deployUrl} onChange={(e) => setProjectForm({ ...projectForm, deployUrl: e.target.value })} data-testid="input-project-url" />
                   <Input placeholder="Tags (comma separated)" value={projectForm.tags} onChange={(e) => setProjectForm({ ...projectForm, tags: e.target.value })} data-testid="input-project-tags" />
                 </div>
                 <label className="flex items-center gap-2 text-sm cursor-pointer">
@@ -245,7 +245,13 @@ export default function Admin() {
                     <p className="text-sm text-muted-foreground truncate">{p.description}</p>
                     <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground">
                       <span>{p.category}</span>
-                      {p.deployUrl && <a href={p.deployUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1"><Eye size={11} /> Live</a>}
+                      {p.deployUrl && (
+                        p.deployUrl.includes("github.com") ? (
+                          <a href={p.deployUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1"><Github size={11} /> GitHub</a>
+                        ) : (
+                          <a href={p.deployUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-1"><Eye size={11} /> Live</a>
+                        )
+                      )}
                     </div>
                   </div>
                   <div className="flex gap-2 flex-shrink-0">
