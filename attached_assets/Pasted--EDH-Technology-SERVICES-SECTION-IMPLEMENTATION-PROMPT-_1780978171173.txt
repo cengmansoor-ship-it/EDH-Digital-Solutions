@@ -1,0 +1,319 @@
+✅ EDH Technology — SERVICES SECTION IMPLEMENTATION PROMPT
+
+IMPORTANT: READ CAREFULLY BEFORE MAKING ANY CHANGES.
+
+This update is ONLY for the Services Section and Portfolio/Projects Section.
+
+DO NOT modify:
+
+Header
+
+Footer
+
+Navigation
+
+Hero Section
+
+Contact Section
+
+Chatbot
+
+SEO Configuration
+
+Authentication System
+
+Admin Login
+
+Existing Database Logic
+
+Existing Functional Features
+
+
+Do not break any existing functionality.
+
+
+---
+
+════════════════════════════════
+
+SERVICES SECTION (MANDATORY)
+
+════════════════════════════════
+
+The website MUST display ALL official EDH Technology services exactly as listed below.
+
+Never remove, rename, merge, shorten, or hide any service.
+
+REQUIRED SERVICES:
+
+1. Remote NOC & Network Operations Support
+
+
+2. Custom Software & Business Management Systems
+
+
+3. AI Chatbot Development
+
+
+4. ChatGPT & AI Integration
+
+
+5. Big Data Analytics
+
+
+6. UI/UX Design
+
+
+7. DevOps & Deployment Support
+
+
+8. QA Testing & Bug Fixing
+
+
+9. Digital Marketing Support
+
+
+10. Creative Design & Content Support
+
+
+
+
+---
+
+🎴 SERVICE CARD REQUIREMENTS
+
+For EACH service, implement:
+
+Premium Glassmorphism Card Design
+
+Unique Professional SVG Icon
+
+Service Title (exact name only)
+
+Short Summary (from provided content only)
+
+Expandable Full Description Section
+
+Business Benefits Section
+
+“Learn More” Button
+
+Smooth Hover Animations
+
+Fully Responsive Layout (mobile/tablet/desktop)
+
+SEO-friendly semantic HTML structure
+
+
+
+---
+
+📌 CONTENT RULES (STRICT)
+
+You MUST use ONLY the official EDH Technology service descriptions.
+
+DO NOT:
+
+Use Lorem Ipsum
+
+Create fake or new service meanings
+
+Shorten or summarize incorrectly
+
+Remove benefits
+
+Replace content with generic text
+
+
+
+---
+
+🧠 SERVICE CONTENT SOURCE (DO NOT ALTER MEANING)
+
+Use the following services exactly as defined:
+
+1. Remote NOC & Network Operations Support
+
+Network monitoring, incident response, uptime management, troubleshooting, escalation handling, remote IT operations support.
+
+2. Custom Software & Business Management Systems
+
+POS systems, CRM systems, inventory systems, dashboards, database-driven applications, business automation tools.
+
+3. AI Chatbot Development
+
+Customer support bots, FAQ automation, lead generation bots, website chatbot integration, 24/7 assistance.
+
+4. ChatGPT & AI Integration
+
+AI-powered workflows, smart replies, automation tools, CRM integration, dashboards, apps.
+
+5. Big Data Analytics
+
+Data processing, dashboards, KPI tracking, reporting, trend analysis, decision-making insights.
+
+6. UI/UX Design
+
+Modern UI design for websites, apps, dashboards with user-centered experience and branding focus.
+
+7. DevOps & Deployment Support
+
+CI/CD, GitHub workflows, hosting setup, deployment, environment management, maintenance.
+
+8. QA Testing & Bug Fixing
+
+Functional testing, bug detection, responsive testing, usability testing, pre-launch QA.
+
+9. Digital Marketing Support
+
+Content strategy, social media support, branding, lead generation, online presence improvement.
+
+10. Creative Design & Content Support
+
+Graphic design, website content, social media visuals, multilingual content (EN/PS/DR).
+
+
+---
+
+🏗️ SYSTEM REQUIREMENTS
+
+Admin Panel (CRITICAL)
+
+Single centralized database
+
+No duplicate records
+
+Real-time sync between admin and website
+
+
+Admin CAN update:
+
+Service title
+
+Description
+
+Icons
+
+Order
+
+SEO metadata
+
+Visibility status
+
+
+BUT CANNOT:
+
+Delete core services
+
+Rename service categories beyond allowed structure
+
+
+
+---
+
+📦 PORTFOLIO / PROJECTS SECTION
+
+GitHub Organization: https://github.com/EDH-Technalogy
+
+Rules:
+
+Use ONLY real GitHub data
+
+DO NOT generate fake projects
+
+Pull project data from repositories
+
+
+Each project card must include:
+
+Project Name
+
+Description (from README only)
+
+Technologies Used
+
+Category
+
+GitHub Link
+
+Live Demo (if exists)
+
+Screenshots from README
+
+Last Updated Date
+
+Development Status
+
+
+
+---
+
+🎨 UI/UX REQUIREMENTS
+
+Design must be:
+
+Agency-level premium UI
+
+Glassmorphism style
+
+Smooth animations
+
+Modern typography
+
+Clean spacing system
+
+High-end portfolio look (like xevensolutions.com inspiration)
+
+
+
+---
+
+🚀 SEO REQUIREMENTS
+
+Semantic HTML structure
+
+Proper heading hierarchy
+
+Optimized images
+
+Fast loading performance
+
+Clean URLs
+
+Do NOT remove existing SEO configs
+
+
+
+---
+
+⚠️ SAFETY RULE
+
+DO NOT:
+
+Break existing system
+
+Modify unrelated sections
+
+Change authentication system
+
+Touch admin login
+
+Alter database schema outside services/projects scope
+
+
+
+---
+
+FINAL GOAL
+
+Create a world-class Services + Projects section for EDH Technology that is:
+
+scalable
+
+maintainable
+
+production-ready
+
+visually premium
+
+data-driven (not hardcoded)
