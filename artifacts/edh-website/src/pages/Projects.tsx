@@ -1,31 +1,21 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Github, Search, Star, Code2 } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+import { ExternalLink, Search, Code2, Layers } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useListProjects } from "@workspace/api-client-react";
 
-interface GitHubProject {
-  id: string;
+interface DbProject {
+  id: number;
   title: string;
   description: string;
   category: string;
-  tags: string[];
-  githubUrl: string;
   deployUrl: string | null;
-  language: string | null;
-  stars: number;
+  imageUrl: string | null;
+  tags: string[];
+  featured: boolean;
+  createdAt: string;
   updatedAt: string;
 }
-
-const LANG_COLORS: Record<string, string> = {
-  TypeScript: "#3178c6",
-  JavaScript: "#f7df1e",
-  Dart: "#00b4ab",
-  PHP: "#777bb4",
-  Python: "#3572A5",
-  HTML: "#e34c26",
-  CSS: "#563d7c",
-};
 
 function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -37,16 +27,13 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   );
 }
 
-function ProjectCard({ project, index }: { project: GitHubProject; index: number }) {
-  const langColor = project.language ? (LANG_COLORS[project.language] ?? "#6e7681") : "#6e7681";
-
+function ProjectCard({ project, index }: { project: DbProject; index: number }) {
   return (
     <FadeIn delay={index * 0.07}>
       <motion.div
         whileHover={{ y: -5 }}
         className="bg-card border border-border/50 rounded-2xl overflow-hidden group h-full flex flex-col transition-shadow hover:shadow-[0_8px_32px_rgba(0,240,255,0.08)] hover:border-primary/30"
       >
-        {/* Card header banner */}
         <div className="h-36 bg-gradient-to-br from-primary/10 via-secondary to-background flex items-center justify-center flex-shrink-0 relative overflow-hidden px-6">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
           <div className="flex items-center gap-3 z-10">
@@ -54,72 +41,39 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
               <Code2 size={28} className="text-primary" />
             </div>
             <div>
-              <span className="text-xs font-medium text-muted-foreground uppercase tracking-widest block">
-                {project.category}
-              </span>
-              <span className="text-sm font-semibold text-foreground line-clamp-1">
-                {project.title}
-              </span>
+              <span className="text-xs font-medium text-muted-foreground uppercase tracking-widest block">{project.category}</span>
+              <span className="text-sm font-semibold text-foreground line-clamp-1">{project.title}</span>
             </div>
           </div>
-          {project.stars > 0 && (
-            <div className="absolute top-3 right-3 flex items-center gap-1 text-xs text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded-full">
-              <Star size={10} fill="currentColor" />
-              {project.stars}
+          {project.featured && (
+            <div className="absolute top-3 right-3 text-xs text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full font-medium">
+              Featured
             </div>
           )}
         </div>
 
-        {/* Card body */}
         <div className="p-5 flex flex-col flex-1">
-          <h3 className="font-display font-semibold text-base mb-2 line-clamp-2 leading-snug">
-            {project.title}
-          </h3>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1 line-clamp-3">
-            {project.description}
-          </p>
+          <h3 className="font-display font-semibold text-base mb-2 line-clamp-2 leading-snug">{project.title}</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1 line-clamp-3">{project.description}</p>
 
-          {/* Tags */}
           <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.language && (
-              <span
-                className="text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1"
-                style={{ backgroundColor: `${langColor}22`, color: langColor, border: `1px solid ${langColor}44` }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ backgroundColor: langColor }} />
-                {project.language}
-              </span>
-            )}
-            {project.tags.filter(t => t !== project.language).slice(0, 4).map((tag) => (
-              <span key={tag} className="text-xs bg-secondary px-2 py-0.5 rounded text-muted-foreground">
-                {tag}
-              </span>
+            {project.tags.slice(0, 5).map((tag) => (
+              <span key={tag} className="text-xs bg-secondary px-2 py-0.5 rounded text-muted-foreground">{tag}</span>
             ))}
           </div>
 
-          {/* Action buttons */}
           <div className="flex items-center gap-3 pt-1">
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Github size={15} />
-              View on GitHub
-            </a>
-            {project.deployUrl && (
-              <>
-                <span className="text-border">·</span>
-                <a
-                  href={project.deployUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                >
-                  Live Demo <ExternalLink size={13} />
-                </a>
-              </>
+            {project.deployUrl ? (
+              <a
+                href={project.deployUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              >
+                Live Demo <ExternalLink size={13} />
+              </a>
+            ) : (
+              <span className="text-xs text-muted-foreground">No live link</span>
             )}
           </div>
         </div>
@@ -129,21 +83,13 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
 }
 
 export default function Projects() {
-  const { data: projects = [], isLoading, isError } = useQuery<GitHubProject[]>({
-    queryKey: ["github-projects"],
-    queryFn: async () => {
-      const res = await fetch("/api/github-projects");
-      if (!res.ok) throw new Error("Failed to load projects");
-      return res.json();
-    },
-    staleTime: 5 * 60 * 1000,
-  });
-
+  const { data: projects = [], isLoading, isError } = useListProjects();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category))).sort()];
-  const filtered = projects.filter((p) => {
+  const typedProjects = projects as DbProject[];
+  const categories = ["All", ...Array.from(new Set(typedProjects.map((p) => p.category).filter(Boolean))).sort()];
+  const filtered = typedProjects.filter((p) => {
     const matchesSearch =
       p.title.toLowerCase().includes(search.toLowerCase()) ||
       p.description.toLowerCase().includes(search.toLowerCase()) ||
@@ -156,27 +102,16 @@ export default function Projects() {
     <div className="min-h-screen py-16">
       <div className="container mx-auto px-4 md:px-6">
 
-        {/* Header */}
         <FadeIn>
           <div className="text-center mb-16">
             <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Our Portfolio</p>
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">Real Projects</h1>
-            <p className="text-muted-foreground max-w-xl mx-auto mb-4">
-              Explore our open-source portfolio on GitHub — real code, real solutions, built for clients across Afghanistan, Egypt, Indonesia, and Thailand.
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">Our Projects</h1>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Real solutions built for clients across Afghanistan, Egypt, Indonesia, Thailand, and beyond.
             </p>
-            <a
-              href="https://github.com/EDH-Technalogy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline"
-            >
-              <Github size={16} />
-              github.com/EDH-Technalogy
-            </a>
           </div>
         </FadeIn>
 
-        {/* Filters */}
         <FadeIn delay={0.1}>
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
             <div className="relative flex-1 max-w-sm">
@@ -206,7 +141,6 @@ export default function Projects() {
           </div>
         </FadeIn>
 
-        {/* Grid */}
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
@@ -225,11 +159,14 @@ export default function Projects() {
           </div>
         ) : isError ? (
           <div className="text-center py-20">
-            <Github size={48} className="mx-auto mb-4 text-muted-foreground/40" />
-            <p className="text-muted-foreground mb-2">Could not reach GitHub right now.</p>
-            <a href="https://github.com/EDH-Technalogy" target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:underline">
-              View projects directly on GitHub →
-            </a>
+            <Layers size={48} className="mx-auto mb-4 text-muted-foreground/40" />
+            <p className="text-muted-foreground">Could not load projects right now. Please try again.</p>
+          </div>
+        ) : typedProjects.length === 0 ? (
+          <div className="text-center py-20">
+            <Layers size={48} className="mx-auto mb-4 text-muted-foreground/20" />
+            <p className="text-muted-foreground mb-1">No projects yet.</p>
+            <p className="text-sm text-muted-foreground/60">Add projects from the Admin panel to showcase your work here.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -239,27 +176,8 @@ export default function Projects() {
           </div>
         )}
 
-        {!isLoading && !isError && filtered.length === 0 && (
-          <div className="text-center py-20 text-muted-foreground">
-            No projects found matching your search.
-          </div>
-        )}
-
-        {/* GitHub CTA */}
-        {!isLoading && !isError && projects.length > 0 && (
-          <FadeIn>
-            <div className="mt-16 text-center">
-              <a
-                href="https://github.com/EDH-Technalogy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-secondary hover:bg-secondary/80 rounded-full text-sm font-medium transition-colors border border-border/50 hover:border-primary/30"
-              >
-                <Github size={18} />
-                See all repositories on GitHub
-              </a>
-            </div>
-          </FadeIn>
+        {!isLoading && !isError && filtered.length === 0 && typedProjects.length > 0 && (
+          <div className="text-center py-20 text-muted-foreground">No projects match your search.</div>
         )}
       </div>
     </div>

@@ -1,10 +1,9 @@
 import { useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Globe, Smartphone, Brain, Cloud, Palette, ShieldCheck, TrendingUp, Plug, ExternalLink, MapPin, Mail, Phone, ChevronRight, Github, Monitor, Code2, Bot, BarChart3, Server, Layers } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Brain, Cloud, Palette, ShieldCheck, TrendingUp, Plug, ExternalLink, MapPin, Mail, Phone, ChevronRight, Monitor, Code2, Bot, BarChart3, Server, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useQuery } from "@tanstack/react-query";
-import { useListServices, useSubmitContact, getListServicesQueryKey } from "@workspace/api-client-react";
+import { useListServices, useListProjects, useSubmitContact, getListServicesQueryKey } from "@workspace/api-client-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -69,27 +68,18 @@ const stats = [
   { value: "50+", label: "Happy Clients" },
 ];
 
-interface GitHubProject {
-  id: string;
+interface DbProject {
+  id: number;
   title: string;
   description: string;
   category: string;
   tags: string[];
-  githubUrl: string;
   deployUrl: string | null;
-  language: string | null;
+  featured: boolean;
 }
 
 export default function Home() {
-  const { data: githubProjects = [] } = useQuery<GitHubProject[]>({
-    queryKey: ["github-projects"],
-    queryFn: async () => {
-      const res = await fetch("/api/github-projects");
-      if (!res.ok) throw new Error("Failed");
-      return res.json();
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  const { data: dbProjects = [] } = useListProjects();
   const { data: services = [] } = useListServices({ query: { queryKey: getListServicesQueryKey() } });
   const submitContact = useSubmitContact();
   const { toast } = useToast();
@@ -99,8 +89,14 @@ export default function Home() {
     defaultValues: { name: "", email: "", subject: "", message: "" },
   });
 
-  const featuredProjects = githubProjects.slice(0, 3);
-  const displayServices = services.slice(0, 6);
+  const allProjects = dbProjects as DbProject[];
+  const featuredProjects = (allProjects.filter(p => p.featured).length > 0
+    ? allProjects.filter(p => p.featured)
+    : allProjects
+  ).slice(0, 3);
+  const displayServices = (services as Array<{ id: number; title: string; description: string; icon: string; order: number }>)
+    .sort((a, b) => a.order - b.order)
+    .slice(0, 6);
 
   const onSubmit = async (data: ContactForm) => {
     try {
@@ -263,46 +259,43 @@ export default function Home() {
             </div>
           </FadeInSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map((project, i) => (
-              <FadeInSection key={project.id} delay={i * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="bg-card border border-border/50 rounded-2xl overflow-hidden group"
-                  style={{ userSelect: "none", pointerEvents: "auto" }}
-                >
-                  <div className="h-40 bg-gradient-to-br from-primary/10 to-secondary flex items-center justify-center">
-                    <div className="bg-white/10 p-3 rounded-xl">
-                      <img src={edhLogo} alt="EDH Technology" className="h-8 w-auto opacity-40" />
+          {featuredProjects.length === 0 ? (
+            <div className="text-center py-12 text-muted-foreground">
+              <p>Projects coming soon — check back after we load our portfolio.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredProjects.map((project, i) => (
+                <FadeInSection key={project.id} delay={i * 0.1}>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    className="bg-card border border-border/50 rounded-2xl overflow-hidden group"
+                  >
+                    <div className="h-40 bg-gradient-to-br from-primary/10 to-secondary flex items-center justify-center">
+                      <div className="bg-white/10 p-3 rounded-xl">
+                        <img src={edhLogo} alt="EDH Technology" className="h-8 w-auto opacity-40" />
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-5" style={{ userSelect: "none" }}>
-                    <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">{project.category}</span>
-                    <h3 className="font-display font-semibold text-lg mt-2 mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-3 line-clamp-2">{project.description}</p>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-xs bg-secondary px-2 py-0.5 rounded text-muted-foreground">{tag}</span>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-muted-foreground text-sm font-medium hover:text-foreground transition-colors">
-                        <Github size={14} /> GitHub
-                      </a>
+                    <div className="p-5">
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">{project.category}</span>
+                      <h3 className="font-display font-semibold text-lg mt-2 mb-2">{project.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3 line-clamp-2">{project.description}</p>
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className="text-xs bg-secondary px-2 py-0.5 rounded text-muted-foreground">{tag}</span>
+                        ))}
+                      </div>
                       {project.deployUrl && (
-                        <>
-                          <span className="text-border">·</span>
-                          <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary text-sm font-medium hover:underline">
-                            Live Demo <ExternalLink size={13} />
-                          </a>
-                        </>
+                        <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary text-sm font-medium hover:underline">
+                          Live Demo <ExternalLink size={13} />
+                        </a>
                       )}
                     </div>
-                  </div>
-                </motion.div>
-              </FadeInSection>
-            ))}
-          </div>
+                  </motion.div>
+                </FadeInSection>
+              ))}
+            </div>
+          )}
 
           <FadeInSection delay={0.3}>
             <div className="text-center mt-12">
